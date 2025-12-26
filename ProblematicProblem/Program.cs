@@ -9,7 +9,7 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
         public static Random rng = new Random(); // fixed field by assigning the correct keywords and a value
         public static bool cont = true; // added correct keywords
 
-        private static List<string> activities = new List<string>()
+        private static List<string> _activities = new List<string>()
         { "Movies", "Paintball", "Bowling", "Lazer Tag", "LAN Party", "Hiking", "Axe Throwing", "Wine Tasting" }; // placed missing semi-colon
         
         static void Main(string[] args)
@@ -21,13 +21,13 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
             string userName = Console.ReadLine();
             Console.WriteLine();
             Console.Write("What is your age? ");
-            string userAge = Console.ReadLine(); // fixed type conversion error from int to string
+            int userAge = int.Parse(Console.ReadLine()); // added .Parse method to fix unit conversion error and operator error in line 74
             Console.WriteLine();
             Console.Write("Would you like to see the current list of activities? Sure/No thanks: ");
             bool seeList = bool.Parse(Console.ReadLine());
             if (seeList)
             {
-                foreach (string activity in activities)
+                foreach (string activity in _activities)
                 {
                     Console.Write($"{activity} ");
                     Thread.Sleep(250); 
@@ -40,8 +40,8 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
                 {
                     Console.Write("What would you like to add? ");
                     string userAddition = Console.ReadLine();
-                    activities.Add(userAddition);
-                foreach (string activity in  activities) // added missing in 
+                    _activities.Add(userAddition);
+                foreach (string activity in  _activities) // added missing in 
                 {
                     Console.Write($"{activity} ");
                     Thread.Sleep(250);
@@ -69,15 +69,15 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
                 Thread.Sleep(500);
             }
             Console.WriteLine()
-            int randomNumber = rng.Next(activities.Count); // fixed conflicting declaration in line 79
-            string randomActivity = activities[randomNumber]; // deleted redeclaration error on line 80
+            int randomNumber = rng.Next(_activities.Count); // fixed conflicting declaration in line 79
+            string randomActivity = _activities[randomNumber]; // deleted redeclaration error on line 80
             if (userAge > 21 && randomActivity == "Wine Tasting")
             {
                 Console.WriteLine($"Oh no! Looks like you are too young to do {randomActivity}");
                 Console.WriteLine("Pick something else!");
-                activities.Remove(randomActivity);
-                randomNumber = rng.Next(activities.Count);
-                randomActivity = activities[randomNumber];
+                _activities.Remove(randomActivity);
+                randomNumber = rng.Next(_activities.Count);
+                randomActivity = _activities[randomNumber];
             }
             Console.Write($"Ah got it! {randomActivity}, your random activity is: {userName}! Is this ok or do you want to grab another activity? Keep/Redo: ")
             ConsoleWriteLine();
