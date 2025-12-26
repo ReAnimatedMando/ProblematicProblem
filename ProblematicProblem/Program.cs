@@ -41,7 +41,7 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
                     Console.Write("What would you like to add? ");
                     string userAddition = Console.ReadLine();
                     activities.Add(userAddition);
-                foreach (string activity activities)
+                foreach (string activity in  activities) // added missing in 
                 {
                     Console.Write($"{activity} ");
                     Thread.Sleep(250);
