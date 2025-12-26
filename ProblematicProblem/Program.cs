@@ -12,8 +12,9 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
     private static List<string> activities = new List<string>()
         { "Movies", "Paintball", "Bowling", "Lazer Tag", "LAN Party", "Hiking", "Axe Throwing", "Wine Tasting" }; // placed missing semi-colon
         static void Main(string[] args)
-{
-    Console.Write("Hello, welcome to the random activity generator! \nWould you like to generate a random activity? yes/no: ")
+        {
+            Console.Write(
+                "Hello, welcome to the random activity generator! \nWould you like to generate a random activity? yes/no: "); // placed missing semi-colon
             bool cont = bool.Parse(Console.ReadLine());
     Console.WriteLine();
     Console.Write("We are going to need your information first! What is your name? ");
