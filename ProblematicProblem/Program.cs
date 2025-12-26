@@ -1,5 +1,5 @@
-System;
-using System.Collections.Generic
+using System; // fixed using clause by placing using to precede all other elements in namespace
+using System.Collections.Generic; // placed a missing semicolon
 using System.Threading;
 
 ProblematicProblem
