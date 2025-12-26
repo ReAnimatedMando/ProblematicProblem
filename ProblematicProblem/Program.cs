@@ -70,14 +70,14 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
             }
             Console.WriteLine()
             int randomNumber = rng.Next(activities.Count); // fixed conflicting declaration in line 79
-            string randomActivity = activities[randomNumber]
+            string randomActivity = activities[randomNumber]; // deleted redeclaration error on line 80
             if (userAge > 21 && randomActivity == "Wine Tasting")
             {
                 Console.WriteLine($"Oh no! Looks like you are too young to do {randomActivity}");
                 Console.WriteLine("Pick something else!");
                 activities.Remove(randomActivity);
                 randomNumber = rng.Next(activities.Count);
-                string randomActivity = activities[randomNumber];
+                randomActivity = activities[randomNumber];
             }
             Console.Write($"Ah got it! {randomActivity}, your random activity is: {userName}! Is this ok or do you want to grab another activity? Keep/Redo: ")
             ConsoleWriteLine();
