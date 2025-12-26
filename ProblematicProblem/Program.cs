@@ -6,8 +6,8 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
 {
     public class Problem // corrected syntax that placed method name where public should be and placed name after class
     {
-        Random rng;
-        static bool cont = true;
+        public static Random rng = new Random(); // fixed field by assigning the correct keywords and a value
+        public static bool cont = true; // added correct keywords
 
         private static List<string> activities = new List<string>()
         { "Movies", "Paintball", "Bowling", "Lazer Tag", "LAN Party", "Hiking", "Axe Throwing", "Wine Tasting" }; // placed missing semi-colon
