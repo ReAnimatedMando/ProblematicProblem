@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem because it was missing the namespace
 {
-    Program class
+    public class Problem // corrected syntax that placed method name where public should be and placed name after class
     {
         Random rng;
 static bool cont = true;
