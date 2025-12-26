@@ -34,7 +34,7 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
                 }
                 Console.WriteLine();
                 Console.Write("Would you like to add any activities before we generate one? yes/no: ");
-                bool addToList = bool.Parse(Console.ReadLine());
+                bool addToList = bool.Parse(Console.ReadLine()); // type and declaration error on line 51
                 Console.WriteLine();
                 while (addToList)
                 {
@@ -48,7 +48,7 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
                 }
                 Console.WriteLine();
                 Console.WriteLine("Would you like to add more? yes/no: ");
-                string addToList = bool.Parse(Console.ReadLine());
+                addToList = bool.Parse(Console.ReadLine()); // deleted redeclaration error
                 }
             }
 
