@@ -6,25 +6,36 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
 {
     public class Problem // corrected syntax that placed method name where public should be and placed name after class
     {
-        public static Random rng = new Random(); // fixed field by assigning the correct keywords and a value
-        public static bool cont = true; // added correct keywords
+        public static Random Rng = new Random(); // fixed field by assigning the correct keywords and a value, and refactored a new name syntax
+        public static bool cont = true; // added correct keywords, and refactored a new name 
 
-        private static List<string> _activities = new List<string>()
-        { "Movies", "Paintball", "Bowling", "Lazer Tag", "LAN Party", "Hiking", "Axe Throwing", "Wine Tasting" }; // placed missing semi-colon
+        public static List<string> _activities = new List<string>() // changed list from private to public
+        { "Movies", "Paintball", "Bowling", "Lazer Tag", "LAN Party", "Hiking", "Axe Throwing", "Wine Tasting" }; // placed missing semicolon
         
         static void Main(string[] args)
         {
-            Console.Write("Hello, welcome to the random activity generator! \nWould you like to generate a random activity? yes/no: "); // placed missing semi-colon
-            bool cont = bool.Parse(Console.ReadLine()); // fixed line 83 where cont was attempting to be redeclared
+            Console.Write("Hello, welcome to the random activity generator! \nWould you like to generate a random activity? yes/no: "); // placed missing semicolon
+            var userResponse = Console.ReadLine().ToLower(); // replaced bool cont with variable to check user response
+            while (userResponse == "yes" && userResponse == "no")
+            {
+                Console.WriteLine("Invalid response. Please type yes or no");
+                userResponse = Console.ReadLine().ToLower();
+            }
+            if (userResponse == "no")
+            {
+                Console.WriteLine("GoodBye");
+                return;
+            }
+            
             Console.WriteLine();
             Console.Write("We are going to need your information first! What is your name? ");
             string userName = Console.ReadLine();
             Console.WriteLine();
             Console.Write("What is your age? ");
-            int userAge = int.Parse(Console.ReadLine()); // added .Parse method to fix unit conversion error and operator error in line 74
+            int userAge = int.Parse(Console.ReadLine()!); // added .Parse method to fix unit conversion error and operator error in line 74
             Console.WriteLine();
             Console.Write("Would you like to see the current list of activities? Sure/No thanks: ");
-            bool seeList = bool.Parse(Console.ReadLine());
+            bool seeList = bool.Parse(Console.ReadLine()!);
             if (seeList)
             {
                 foreach (string activity in _activities)
@@ -48,7 +59,7 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
                 }
                 Console.WriteLine();
                 Console.WriteLine("Would you like to add more? yes/no: ");
-                addToList = bool.Parse(Console.ReadLine()); // deleted redeclaration error
+                addToList = bool.Parse(Console.ReadLine()!); // deleted redeclaration error
                 }
             }
 
@@ -68,20 +79,24 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
                 Console.Write(". ");
                 Thread.Sleep(500);
             }
-            Console.WriteLine()
-            int randomNumber = rng.Next(_activities.Count); // fixed conflicting declaration in line 79
+
+            Console.WriteLine();
+            int randomNumber = Rng.Next(_activities.Count); // fixed conflicting declaration in line 79
             string randomActivity = _activities[randomNumber]; // deleted redeclaration error on line 80
             if (userAge > 21 && randomActivity == "Wine Tasting")
             {
                 Console.WriteLine($"Oh no! Looks like you are too young to do {randomActivity}");
                 Console.WriteLine("Pick something else!");
                 _activities.Remove(randomActivity);
-                randomNumber = rng.Next(_activities.Count);
+                randomNumber = Rng.Next(_activities.Count);
                 randomActivity = _activities[randomNumber];
-            }
-            Console.Write($"Ah got it! {randomActivity}, your random activity is: {userName}! Is this ok or do you want to grab another activity? Keep/Redo: ")
+            };
+
+
+            Console.Write(
+                $"Ah got it! {randomActivity}, your random activity is: {userName}! Is this ok or do you want to grab another activity? Keep/Redo: ");
             Console.WriteLine(); // added missing period
-            cont = bool.Parse(Console.ReadLine());
+            cont = bool.Parse(Console.ReadLine()!);
             }
         }
     }
