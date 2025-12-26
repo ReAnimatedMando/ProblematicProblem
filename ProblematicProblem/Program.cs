@@ -32,11 +32,23 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
             string userName = Console.ReadLine();
             Console.WriteLine();
             Console.Write("What is your age? ");
-            int userAge = int.Parse(Console.ReadLine()!); // added .Parse method to fix unit conversion error and operator error in line 74
+            int userAge;
+            while (!int.TryParse(Console.ReadLine(), out userAge)) // added .Parse method to fix unit conversion error and operator error in line 74
+            {
+                Console.Write("Invalid response. Please enter valid age.");
+            }
+            
             Console.WriteLine();
             Console.Write("Would you like to see the current list of activities? Sure/No thanks: ");
-            bool seeList = bool.Parse(Console.ReadLine()!);
-            if (seeList)
+
+            userResponse = Console.ReadLine().ToLower();
+
+            while (userResponse != "sure" && userResponse != "no thanks")
+            {
+                Console.WriteLine("Invalid response, please type sure/no thanks.");
+            }
+            
+            if (userResponse == "sure")
             {
                 foreach (string activity in _activities)
                 {
@@ -45,9 +57,16 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
                 }
                 Console.WriteLine();
                 Console.Write("Would you like to add any activities before we generate one? yes/no: ");
-                bool addToList = bool.Parse(Console.ReadLine()); // type and declaration error on line 51
+                userResponse = Console.ReadLine().ToLower(); // type and declaration error on line 51
+
+                while (userResponse != "yes" && userResponse != "no")
+                {
+                    Console.WriteLine("Invalid response, please write yes/no.");
+                    userResponse = Console.ReadLine().ToLower();
+                }
+                
                 Console.WriteLine();
-                while (addToList)
+                while (userResponse == "yes")
                 {
                     Console.Write("What would you like to add? ");
                     string userAddition = Console.ReadLine();
@@ -59,7 +78,13 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
                 }
                 Console.WriteLine();
                 Console.WriteLine("Would you like to add more? yes/no: ");
-                addToList = bool.Parse(Console.ReadLine()!); // deleted redeclaration error
+                userResponse = Console.ReadLine().ToLower();
+
+                while (userResponse != "yes" && userResponse != "no")
+                {
+                    Console.WriteLine("Invalid response, please write yes/no.");
+                    userResponse = Console.ReadLine().ToLower();
+                }
                 }
             }
 
@@ -83,7 +108,7 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
             Console.WriteLine();
             int randomNumber = Rng.Next(_activities.Count); // fixed conflicting declaration in line 79
             string randomActivity = _activities[randomNumber]; // deleted redeclaration error on line 80
-            if (userAge > 21 && randomActivity == "Wine Tasting")
+            if (userAge < 21 && randomActivity == "Wine Tasting")
             {
                 Console.WriteLine($"Oh no! Looks like you are too young to do {randomActivity}");
                 Console.WriteLine("Pick something else!");
@@ -93,10 +118,21 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
             };
 
 
-            Console.Write(
-                $"Ah got it! {randomActivity}, your random activity is: {userName}! Is this ok or do you want to grab another activity? Keep/Redo: ");
+            Console.Write($"Ah got it! {userName}, your random activity is: {randomActivity}! Is this ok or do you want to grab another activity? Keep/Redo: ");
             Console.WriteLine(); // added missing period
-            cont = bool.Parse(Console.ReadLine()!);
+            userResponse = Console.ReadLine().ToLower(); // type and declaration error on line 51
+
+            while (userResponse != "keep" && userResponse != "redo")
+            {
+                Console.WriteLine("Invalid response, please write Keep/Redo.");
+                userResponse = Console.ReadLine().ToLower();
+            }
+
+            if (userResponse == "keep")
+            {
+                cont = false;
+            }
+            
             }
         }
     }
