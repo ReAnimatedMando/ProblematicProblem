@@ -80,7 +80,7 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
                 randomActivity = _activities[randomNumber];
             }
             Console.Write($"Ah got it! {randomActivity}, your random activity is: {userName}! Is this ok or do you want to grab another activity? Keep/Redo: ")
-            ConsoleWriteLine();
+            Console.WriteLine(); // added missing period
             cont = bool.Parse(Console.ReadLine());
             }
         }
