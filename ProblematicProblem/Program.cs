@@ -7,8 +7,10 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
     public class Problem // corrected syntax that placed method name where public should be and placed name after class
     {
         Random rng;
-static bool cont = true;
-static List<string> activities = new List<string>() { "Movies", "Paintball", "Bowling", "Lazer Tag", "LAN Party", "Hiking", "Axe Throwing", "Wine Tasting" }
+    static bool cont = true;
+
+    private static List<string> activities = new List<string>()
+        { "Movies", "Paintball", "Bowling", "Lazer Tag", "LAN Party", "Hiking", "Axe Throwing", "Wine Tasting" }; // placed missing semi-colon
         static void Main(string[] args)
 {
     Console.Write("Hello, welcome to the random activity generator! \nWould you like to generate a random activity? yes/no: ")
