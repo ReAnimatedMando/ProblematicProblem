@@ -2,7 +2,7 @@ using System; // fixed using clause by placing using to precede all other elemen
 using System.Collections.Generic; // placed a missing semicolon
 using System.Threading;
 
-ProblematicProblem
+namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem because it was missing the namespace
 {
     Program class
     {
