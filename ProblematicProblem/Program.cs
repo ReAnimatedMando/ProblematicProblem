@@ -21,7 +21,7 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
             string userName = Console.ReadLine();
             Console.WriteLine();
             Console.Write("What is your age? ");
-            int userAge = Console.ReadLine();
+            string userAge = Console.ReadLine(); // fixed type conversion error from int to string
             Console.WriteLine();
             Console.Write("Would you like to see the current list of activities? Sure/No thanks: ");
             bool seeList = bool.Parse(Console.ReadLine());
