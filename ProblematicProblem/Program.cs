@@ -15,7 +15,7 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
         {
             Console.Write(
                 "Hello, welcome to the random activity generator! \nWould you like to generate a random activity? yes/no: "); // placed missing semi-colon
-            bool cont = bool.Parse(Console.ReadLine());
+            bool cont = bool.Parse(Console.ReadLine()); // fixed line 83 where cont was attempting to be redeclared
     Console.WriteLine();
     Console.Write("We are going to need your information first! What is your name? ");
     string userName = Console.ReadLine();
@@ -80,7 +80,7 @@ namespace ProblematicProblem // compiler couldn't resolve ProblematicProblem bec
         }
         Console.Write($"Ah got it! {randomActivity}, your random activity is: {userName}! Is this ok or do you want to grab another activity? Keep/Redo: ")
                 ConsoleWriteLine();
-        bool cont = bool.Parse(Console.ReadLine());
+         cont = bool.Parse(Console.ReadLine());
     }
 }
     }
